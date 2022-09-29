@@ -1,5 +1,6 @@
 package id.inixindo.kotlinmysql
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,11 +29,33 @@ class MainActivity : AppCompatActivity() {
         listCourses = findViewById(R.id.listCourses)
         courseAdapter = CourseAdapter(arrayListOf(), object : CourseAdapter.OnAdapterListener {
             override fun onClick(course: CourseModel.Data) {
-                Toast.makeText(applicationContext, "$course", Toast.LENGTH_LONG).show()
+                startActivity(
+                    Intent(
+                        applicationContext,
+                        DetailActivity::class.java
+                    ).putExtra("course", course)
+                )
             }
 
             override fun onDelete(course: CourseModel.Data) {
-                Toast.makeText(applicationContext, "Delete Course", Toast.LENGTH_LONG).show()
+                api.delete(course.id!!).enqueue(object : Callback<MessageModel> {
+                    override fun onResponse(
+                        call: Call<MessageModel>,
+                        response: Response<MessageModel>
+                    ) {
+                        if (response.isSuccessful) {
+                            val delete = response.body()
+                            Toast.makeText(applicationContext, delete!!.message, Toast.LENGTH_LONG)
+                                .show()
+                            getAllCourses()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<MessageModel>, t: Throwable) {
+                        Log.e("MainActivity", t.toString())
+                    }
+
+                })
             }
         })
         listCourses.adapter = courseAdapter
