@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onDelete(course: CourseModel.Data) {
+                // sebelum menghapus buatkan sebuah konfirmasi dengan alert dialog
+
                 api.delete(course.id!!).enqueue(object : Callback<MessageModel> {
                     override fun onResponse(
                         call: Call<MessageModel>,
@@ -68,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupListener() {
         fabCreate.setOnClickListener {
-            Toast.makeText(applicationContext, "Create New Course", Toast.LENGTH_LONG).show()
+            startActivity(Intent(applicationContext, CreateActivity::class.java))
         }
     }
 

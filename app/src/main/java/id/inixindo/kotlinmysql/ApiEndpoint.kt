@@ -25,4 +25,13 @@ interface ApiEndpoint {
     fun delete(
         @Field("id") id: String
     ): Call<MessageModel>
+
+    @FormUrlEncoded
+    @POST("createCourse.php")
+    fun create(
+        @Field("name") name: String,
+        @Field("duration") duration: String,
+        @Field("price") price: String,
+        @Field("description") description: String,
+    ): Call<MessageModel>
 }

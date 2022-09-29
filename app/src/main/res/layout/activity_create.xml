@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".CreateActivity">
+
+    <EditText
+        android:id="@+id/editCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Please enter course name"
+        android:inputType="text"
+        android:minHeight="60dp" />
+
+    <EditText
+        android:id="@+id/editCourseDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Please enter course duration"
+        android:inputType="text"
+        android:minHeight="60dp" />
+
+    <EditText
+        android:id="@+id/editCoursePrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Please enter course price"
+        android:inputType="text"
+        android:minHeight="60dp" />
+
+    <EditText
+        android:id="@+id/editCourseDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="Please enter course description"
+        android:inputType="text"
+        android:minHeight="60dp" />
+
+    <Button
+        android:id="@+id/button_create"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Create Course"
+        android:textAllCaps="true"
+        app:cornerRadius="150dp" />
+
+</LinearLayout>
